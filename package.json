@@ -1,0 +1,20 @@
+{
+  "name": "idmt380-alpha-team",
+  "version": "1.0.0",
+  "description": "Coloringbook app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexalsid/IDMt380-Alpha-Team.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexalsid/IDMt380-Alpha-Team/issues"
+  },
+  "homepage": "https://github.com/alexalsid/IDMt380-Alpha-Team#readme",
+  "devDependencies": {}
+}
