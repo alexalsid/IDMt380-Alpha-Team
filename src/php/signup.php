@@ -5,6 +5,7 @@
 /* vars to hold json data from json file */
 $userFile = file_get_contents('./php/json/user.json');
 $userData = json_decode($userFile, true);
+$username = $_POST['username'];
 
 /* var to hold temp value for testing loading and saving */
 $currentUser = '';
@@ -57,7 +58,7 @@ function login() {
 
     global $userData;
 
-    $username = $_POST['username'];
+    
     $password = $_POST['password'];
 
     foreach($userData as $user){
@@ -89,9 +90,15 @@ function login() {
 function loadSavedWork($currentUser){
     global $userData;
 
-    // get index for current user object
-    $currentUserIndex = findIndex($currentUser);
-    $user = $userData[$currentUserIndex];
+    $username = $_GET['username'];
+    foreach ($userData as $user) {
+
+        if ($username == $user['username'])
+
+        $currentUser = $user;
+        $currentUserIndex = $user['user_id'];
+};
+
     echo $currentUserIndex . "\n";
     echo 'saved work will display here';
 
@@ -110,6 +117,8 @@ function saveWork(){
     echo "--------------- Testing Saving -----------------\n";
 
     global $userData;
+
+    $username = $_GET['username'];
 
     // temporary values for saved work to be tested
     // and this will be retreived from data and stored within JS or something
@@ -161,6 +170,10 @@ function findIndex($currentUser) {
         $index++;
     }
 };
+
+
+
+
 
 /* run functions */
 
