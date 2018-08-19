@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Compiled source #
 ###################
 *.com
@@ -37,3 +38,7 @@ ehthumbs.db
 Thumbs.db
 
 test/
+=======
+node_modules/
+**/.DS_Store
+>>>>>>> upstream/master

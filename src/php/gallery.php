@@ -4,26 +4,26 @@
 
 		<div class="SVGbox">
 			<?php include 'img/htmlsvgs/An_Christina.html'; ?>	
-			<h2></h2>	
-			<p>Christina An</p>	
+			<h2 class="artistTitle">Christina<br>An</h2>	
+			<p></p>	
 		</div>
 		
 		<div class="SVGbox">
 			<?php include 'img/htmlsvgs/Brennan_Stephen.html'; ?>	
-			<h2></h2>	
-			<p>Stephen Brennan</p>	
+			<h2 class="artistTitle">Stephen<br>Brennan</h2>	
+			<p></p>	
 		</div>
 
 		<div class="SVGbox">
 			<?php include 'img/htmlsvgs/Davalos_John.html'; ?>	
-			<h2>Kiwi</h2>
-			<p>John Davalos</p>	
+			<h2 class="artistTitle">John<br>Davalos</h2>
+			<p></p>	
 		</div>
 
 		<div class="SVGbox">
 			<?php include 'img/htmlsvgs/Filtz_Angela.html'; ?>	
-			<h2>The Running Man</h2>	
-			<p>Angela Filtz</p>	
+			<h2 class="artistTitle">Angela<br>Filtz</h2>	
+			<p></p>	
 		</div>	
 
 	<div id="canvas" onmousemove="showCoords(event)">
