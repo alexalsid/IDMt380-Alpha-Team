@@ -84,7 +84,11 @@ function saveWork(){
     // and this will be retreived from data and stored within JS or something
     // savedId will be index of object in saved work
     $savedId = null;
-    $newSource = "Change this to see if saved";
+    $html = file_get_contents('index.php');
+    $pattern = '#<\s*?span\b[^>]*>(.*?)</span\b[^>]*>#s';
+    preg_match($pattern, $html, $matches);
+    
+    $newSource = $matches[1];
     // get index for current user object
     global $currentUser;
     $currentUserIndex = findIndex($currentUser);
@@ -96,7 +100,7 @@ function saveWork(){
     if(is_null($savedId)){
         $newWork = array(
             'saved_id' => sizeof($savedWork),
-            'saved_source' => "Newly saved work" //grab html code here
+            'saved_source' => $newSource //grab html code here
         );
         array_push($savedWork,$newWork);
         $userData[$currentUserIndex]['saved_work'] = $savedWork;
@@ -127,22 +131,15 @@ function findIndex($currentUser) {
     }
 };
 
-//function to get html code 
+
+function getSvgData (){
+
+  
+
+   
+};
 
 
-
-
-
-// Find all images 
-
-function getSvgData () {
-
-    $html = file_get_html('index.php')->plaintext;
-    foreach($html->find('div') as $element) 
-       echo $element . '<br>';
-    };
-
-getSvgData();
 
 
 /* run functions */
