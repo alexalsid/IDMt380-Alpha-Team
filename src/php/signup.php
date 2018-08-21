@@ -1,11 +1,15 @@
 <?php
 /* vars to hold json data from json file */
-$userFile = file_get_contents('./php/json/user.json');
+$userFile = file_get_contents('../src/php/json/user.json');
 $userData = json_decode($userFile, true);
 /* var to hold temp value for testing loading and saving */
-$currentUser = '';
+$newUsername = $_POST['new-username'];
+$username = $_POST['username'];
+$currentUser = $_GET['username'];
+
 /* function for testing basic sign up */
 function signUp(){
+    echo 'SIGNUP FUNCT';
     global $userData;
     //new user and new password grabbed from form
     $newUsername =  $_POST['new-username'];
@@ -32,7 +36,7 @@ function signUp(){
         
         // update json file with updated array of user info
         $newUserData = json_encode($userData, JSON_PRETTY_PRINT);
-        file_put_contents('./php/json/user.json', $newUserData);
+        file_put_contents('../src/php/json/user.json', $newUserData);
         echo "You have successfully signed up.\n";
         }
     }
@@ -82,7 +86,7 @@ function saveWork(){
     $savedId = null;
     $newSource = "Change this to see if saved";
     // get index for current user object
-    $currentUser = '';
+    global $currentUser;
     $currentUserIndex = findIndex($currentUser);
     // get saved work array from current user object
     //$user = $userData[$currentUserIndex];
@@ -92,7 +96,7 @@ function saveWork(){
     if(is_null($savedId)){
         $newWork = array(
             'saved_id' => sizeof($savedWork),
-            'saved_source' => "Newly saved work"
+            'saved_source' => "Newly saved work" //grab html code here
         );
         array_push($savedWork,$newWork);
         $userData[$currentUserIndex]['saved_work'] = $savedWork;
@@ -103,14 +107,18 @@ function saveWork(){
     // update json file with updated array of user info
     $newUserData = json_encode($userData, JSON_PRETTY_PRINT);
     //print_r($newUserData);
-    file_put_contents('./json/user.json', $newUserData);
+    file_put_contents('../src/php/json/user.json', $newUserData);
     echo "You have successfully saved your work.";
     echo "\n\n";
 }
+
+
 /* function that will return the index of current user */
-function findIndex($currentUser) {
+function findIndex($currentUser) { 
     global $userData;
+    global $currentUser;
     $index = 0;
+    
     foreach($userData as $user){ 
         if($user['username'] == $currentUser){
             return $index;
@@ -118,6 +126,25 @@ function findIndex($currentUser) {
         $index++;
     }
 };
+
+//function to get html code 
+
+
+
+
+
+// Find all images 
+
+function getSvgData () {
+
+    $html = file_get_html('index.php')->plaintext;
+    foreach($html->find('div') as $element) 
+       echo $element . '<br>';
+    };
+
+getSvgData();
+
+
 /* run functions */
 if (isset($_POST['new-username']))
 {
@@ -125,7 +152,16 @@ if (isset($_POST['new-username']))
 } 
 elseif (isset($_POST['username'])) {
    login();
-};
+} elseif(isset($_POST['save-work'])) {
+
+    saveWork();
+}
+
+
+
+//elseif (isset($_POST['save-work'])) {saveWork();
+
+
 //loadSavedWork();
 //saveWork();
 ?>

@@ -1,5 +1,5 @@
-[
-    {
+{
+    "0": {
         "user_id": 0,
         "username": "ws392",
         "password": "pass123",
@@ -23,7 +23,7 @@
             }
         ]
     },
-    {
+    "1": {
         "user_id": 1,
         "username": "ppl980",
         "password": "pass1234",
@@ -35,18 +35,27 @@
             }
         ]
     },
-    {
+    "2": {
         "user_id": 2,
         "username": "asd77",
         "password": "pass1234",
         "avatar": "monkey",
         "saved_work": []
     },
-    {
+    "3": {
         "user_id": 3,
         "username": "dfe73",
         "password": "pass1234",
         "avatar": "snake",
         "saved_work": []
+    },
+    "4": {
+        "user_id": 4,
+        "username": "alex",
+        "password": "alex",
+        "avatar": null,
+        "saved_work": [
+           
+        ]
     }
-]
+}
