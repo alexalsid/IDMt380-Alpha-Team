@@ -4,7 +4,13 @@
 		<!-- <input id="groupMode" type="checkbox">Group Colors -->
 	 	<div class="icon" id="zoomOut" onclick="scaleVal(0.9)"><?php include 'icon/zoomOut.svg'; ?></div>
 	 	<div class="icon" id="zoomIn" onclick="scaleVal(1.1)"><?php include 'icon/zoomIn.svg'; ?></div>
+		<form action="" method="post" id="save-work-form">
+		<button id="save-btn" class="temp" >Save Work</button>
+		<input type="text"  name="save-work" class="temp" id="save-work" value="">
+		</form>
 		<div class="icon" id="palettes">
+
+
 			<div class="palette">
 				<p>#FFFFFF</p>
 				<p>#720066</p>
@@ -55,6 +61,8 @@
 	<div class="colorPicker" id="colorPicker">
 		<div id="pickerButton"></div>
 	</div>
+
+	
 
 
 

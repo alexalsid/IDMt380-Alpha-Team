@@ -54,11 +54,19 @@
 
 					foreach ($user['saved_work'] as $work) {
 
-						echo '<div class="saved-work">' . $work['saved_source'] .
+						echo 
+						'<div class="SVGbox">
+						<div class="innerBox">
+						<div class="svg-data user">';
 						
-						'</div>';
+						include $work["saved_source"];	
+
+					echo'</div>
+						</div>
+						</div>';
 						
-					}
+						
+					};
 
 			};
 

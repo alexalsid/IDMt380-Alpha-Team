@@ -1,70 +1,34 @@
 [
     {
-        "user_id": 0,
-        "username": "ws392@drexel.edu",
-        "password": "pass1234",
-        "avatar": "fox",
-        "saved_work": [
-            {
-                "saved_id": 0,
-                "saved_source": "source_code_1_for_ws392"
-            },
-            {
-                "saved_id": 1,
-                "saved_source": "Change this to see if saved"
-            },
-            {
-                "saved_id": 2,
-                "saved_source": "Newly saved work"
-            },
-            {
-                "saved_id": 3,
-                "saved_source": "Newly saved work"
-            }
-        ]
-    },
-    {
         "user_id": 1,
-        "username": "ppl980@drexel.edu",
-        "password": "pass1234",
-        "avatar": "fox",
-        "saved_work": [
-            {
-                "saved_id": 0,
-                "saved_source": "Newly saved work"
-            },
-            {
-                "saved_id": 1,
-                "saved_source": "Change this to see if saved"
-            }
-        ]
-    },
-    {
-        "user_id": 2,
-        "username": "asd77",
-        "password": "pass1234",
-        "avatar": "monkey",
-        "saved_work": []
-    },
-    {
-        "user_id": 3,
-        "username": "dfe73",
-        "password": "pass1234",
-        "avatar": "snake",
-        "saved_work": []
-    },
-    {
-        "user_id": 6,
-        "username": "fake@drexel.edu",
-        "password": "pass1234",
-        "avatar": null,
-        "saved_work": []
-    },
-    {
-        "user_id": 7,
         "username": "ara82@drexel.edu",
         "password": "pass1234",
         "avatar": null,
-        "saved_work": []
+        "saved_work": [
+            {
+                "saved_id": 0,
+                "saved_source": "img\/saved\/saved_00.html"
+            },
+            {
+                "saved_id": 1,
+                "saved_source": "img\/saved\/saved_01.svg"
+            },
+            {
+                "saved_id": 2,
+                "saved_source": "img\/saved\/saved_02.svg"
+            },
+            {
+                "saved_id": 3,
+                "saved_source": "img\/saved\/saved_03.svg"
+            },
+            {
+                "saved_id": 4,
+                "saved_source": "img\/saved\/saved_04.svg"
+            },
+            {
+                "saved_id": 5,
+                "saved_source": "img\/saved\/saved_05.svg"
+            }
+        ]
     }
 ]

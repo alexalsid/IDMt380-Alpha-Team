@@ -426,9 +426,18 @@ I edited so I don't confuse myself */
 
 }
 
-.saved-work {height: 200px;
-				width: 100%;
-		background: #2d2d3d;}
+.myGallery .SVGbox {
+	height: 200px;
+	width: 100%;
+	margin: 0;
+
+
+}
+
+.myGallery img {height: 200px;
+width: auto;}
+
+
 
 .info {
 	display: flex;
@@ -599,6 +608,8 @@ I edited so I don't confuse myself */
 	position: absolute;
 }
 
+#save-work {display: none;}
+
 .showRainbow * {
 	transform: translateY(0) !important;
 }
@@ -642,13 +653,7 @@ I edited so I don't confuse myself */
 		justify-content: flex-start;
 		padding-right: 1rem;
 	}
-	.innerUserModal {
-		height: 25rem;
-		display: flex;
-		flex-flow: row wrap;
-		justify-content: center;
-		align-items: center;
-	}
+
 	.modalTitle {
 		text-align: right;
 		padding-bottom: 0;

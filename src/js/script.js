@@ -7,7 +7,6 @@ function load() {
 }
 
 
-
 var activeHue = 200;
 var activeSat = 100;
 var activeLit = 60;
@@ -15,17 +14,18 @@ var activeLit = 60;
 var theScale;
 
 
-$('g g').on('click', function() {
+$('g g').on('click', function () {
 	setUndo(this.children);
 	if (backCount > 0) {
 		for (var i = 0; i < backCount.length; i++) {
- 		return priorMoves.splice(0, 1);
+			return priorMoves.splice(0, 1);
 		}
 	}
 	backCount = 0;
 	var selector = '#' + this.id + ' *';
 	$(selector).css('fill', activeColor);
 });
+
 
 
 
@@ -51,7 +51,7 @@ function clearImage(which) {
 // });
 
 
-$('g g').on('click', function() {
+/*$('g g').on('click', function() {
 	setUndo(this.children);
 	if (backCount > 0) {
 		for (var i = 0; i < backCount.length; i++) {
@@ -61,7 +61,7 @@ $('g g').on('click', function() {
 	backCount = 0;
 	var selector = '#' + this.id + ' *';
 	$(selector).css('fill', activeColor);
-});
+});*/
 
 
 
@@ -417,6 +417,10 @@ $('#userBtn').click(function (){openModal('#userModal')});
 $('#helpBtn').click(function (){openModal('#helpModal')});
 
 $("#gallery").on("click", ".SVGbox", function() {
+	openImage(this);
+});
+
+$("#myGallery").on("click", ".SVGbox", function () {
 	openImage(this);
 });
 

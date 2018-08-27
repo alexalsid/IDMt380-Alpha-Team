@@ -103,8 +103,6 @@ function saveWork(){
     // and this will be retreived from data and stored within JS or something
     // savedId will be index of object in saved work
     $savedId = null;
-   
-    
     $newSource = $_POST['save-work'];
     // get index for current user object
     global $currentUser;
@@ -112,26 +110,33 @@ function saveWork(){
     // get saved work array from current user object
     //$user = $userData[$currentUserIndex];
     $savedWork = $userData[$currentUserIndex]['saved_work'];
+    //path to image
+
+    $savedPath = 'img/saved/saved_' . $currentUserIndex . sizeof($savedWork) . '.svg';
+
     // for this we will say fresh work have null as savedId 
     // but we need to figure something that will work with HTML and JS
-    if(is_null($savedId)){
-        $newWork = array(
-            'saved_id' => sizeof($savedWork),
-            'saved_source' => $newSource //grab html code here
-        );
-        array_push($savedWork,$newWork);
-        $userData[$currentUserIndex]['saved_work'] = $savedWork;
+   if(is_null($savedId)){
+       $newWork = array(
+          'saved_id' => sizeof($savedWork),
+          'saved_source' => $savedPath //grab html code here
+      ); 
+    
+     array_push($savedWork,$newWork);
+    $userData[$currentUserIndex]['saved_work'] = $savedWork;
     }else{
-        $savedWork[$savedId]['saved_source'] = $newSource;
-        $userData[$currentUserIndex]['saved_work'] = $savedWork;
-    }
-    // update json file with updated array of user info
+      $savedWork[$savedId]['saved_source'] = $savedPath;
+     $userData[$currentUserIndex]['saved_work'] = $savedWork;
+  }
+    //update json file with updated array of user info
     $newUserData = json_encode($userData, JSON_PRETTY_PRINT);
-    //print_r($newUserData);
-    file_put_contents('../src/php/json/user.json', $newUserData);
-    echo "You have successfully saved your work.";
-    echo "\n\n";
-}
+    file_put_contents('php/json/user.json', $newUserData);
+
+    //create svg file
+   file_put_contents($savedPath, $newSource);
+   echo "You have successfully saved your work.";
+   echo "\n\n";
+};
 
 
 /* function that will return the index of current user */
@@ -182,8 +187,9 @@ function checkLoggedIn () {
         echo 'there is no user';
     } else {
 
-        echo '<script src="js/loggedin.js"></script>';
-        loadSavedWork($currentUser);
+    
+    echo '<script src="js/loggedin.js"></script>';
+
     
 
     }
