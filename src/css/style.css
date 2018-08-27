@@ -51,7 +51,7 @@ button {
 	height: 100vh;
 	overflow-y: auto;
 	overflow-x: hidden;
-	/*padding-right: 1em;*/
+	/*padding-right: 1rem;*/
 }
 
 /* HEADER */
@@ -63,7 +63,7 @@ button {
 	top: 0;
 	left: 0;
 	z-index: 10;
-	padding: 1em 1em 0;
+	padding: 1rem 1rem 0;
 	width: 100%;
 	height: 3em;
 	background: linear-gradient(rgba(0, 0, 10, .7) 0%, transparent);
@@ -83,7 +83,10 @@ button {
 
 .icon {
 	width: 2em;
-	margin: 0 .5em 0 0;
+
+	height: 2em;
+
+	margin: 0 .5rem 0 0;
 	transition: .2s;
 	pointer-events: all;
 	cursor: pointer;
@@ -97,6 +100,14 @@ button {
 	fill: #f5f5f5;
 }
 
+g g * {
+	transition: .2s;
+
+}
+g g:hover * {
+	fill: #ddd;
+}
+
 /* HOME PAGE */
 
 .about {
@@ -108,14 +119,14 @@ button {
 
 .about h3 {
 	/*	margin-top: 20em;
-	margin-bottom: -25em;
+	margin-bottom: -25rem;
 */
 	padding-bottom: 3em;
 }
 
 .avatar {
-	max-width: 15em;
-	min-height: 15em;
+	max-width: 15rem;
+	min-height: 15rem;
 	margin: -4em 0 0 3em;
 	cursor: pointer;
 	transition: 1s ease;
@@ -130,21 +141,17 @@ button {
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: center;
-	padding: 0 1em;
+	padding: 0 1rem;
 }
 
 .SVGbox {
 	/*width: 100%;*/
 	/*flex-grow: 1 0 20%;*/
-	max-width: 30%;
-	min-width: 15em;
-	height: 17em;
-	background: url(../img/canvasTextureL.jpg);
-	/*background-blend-mode: hard-light;*/
-	background-size: cover;
-	background-position: center;
-	margin: 0 1em 6em;
-	padding: 1em 0;
+	max-width: 13rem;
+	/*min-width: 15rem;*/
+	/*height: 17em;*/
+	margin: 0 0rem 6em;
+	/*padding: 1rem 0;*/
 	transition: .3s;
 	flex-grow: 1;
 }
@@ -154,12 +161,13 @@ button {
 }
 
 .gallery .SVGbox h2 {
-	margin: 1em 0 0 1em;
+	/*margin: 1rem 0 0 0rem;*/
+	text-align: left;
 }
 
 .gallery .SVGbox svg {
-	width: 15em;
-	height: 15em;
+	/*width: 15rem;*/
+	height: 15rem;
 	pointer-events: none;
 }
 
@@ -169,25 +177,41 @@ button {
 
 /* TOOL KITS */
 
-.toolkits,
+.toolkits {
+	width: 100%;
+	pointer-events: none !important;
+	transition: .2s;
+	z-index: 6;
+}
+
 .toolkits * {
+	pointer-events: all;
+	/*width: auto;*/
+
 	transition: .2s;
 	z-index: 6;
 }
 
 .toolkits .colorPicker,
 .toolkits #swatches,
-.toolkits #changeScale {
+.toolkits .toolBar  {
 	transform: translateY(6em);
 }
 
-.toolbar {
+.toolBar {
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: flex-end;
 	position: fixed;
-	bottom: 5em;
-	left: 1em;
+	bottom: 10em;
+	left: 0;
+	padding: 0 1rem;
+	height: 100%;
+	/*width: 4rem;*/
+	min-width: 4rem;
 	color: #444;
-	font-size: 2em;
-	z-index: 60;
+	/*font-size: 2rem;*/
+	/*z-index: 30;*/
 }
 
 .colorPicker {
@@ -218,7 +242,7 @@ button {
 	position: fixed;
 	bottom: 6em;
 	left: 0;
-	padding: .5em 1em;
+	padding: .5rem 1rem;
 	border: 1px solid #444;
 	width: 100%;
 	cursor: pointer;
@@ -226,10 +250,10 @@ button {
 
 .swatch,
 .erasor {
-	height: 1.5em;
-	flex: 1 0 30%;
-	width: 3em;
-	margin-right: 1em;
+	height: 1.5rem;
+	flex: 1 0 20%;
+	width: 3rem;
+	margin-right: 1rem;
 	border: 1px solid #444;
 	border-radius: 2px;
 	transition: .2s;
@@ -240,7 +264,7 @@ button {
 .erasor {
 	margin-left: 2em;
 	background: url(../icon/crossout.svg);
-	background-size: 3em 1.5em;
+	background-size: 3em 1.5rem;
 }
 
 #activeSwatch {
@@ -248,14 +272,84 @@ button {
 	background: transparent;
 }
 
-#changeScale {
-	position: fixed;
-	bottom: 10em;
-	left: 2em;
-	height: 2em;
-	width: 10em;
-	background: #444;
-	padding: .5em;
+#palettes {
+	display: flex;
+	flex-flow: row wrap;
+	width: 2rem;
+	height: 2rem;
+	overflow: hidden;
+	background: url(../icon/palette.png);
+	background-size: cover;
+	cursor: pointer;
+}
+
+#palettes * {
+	opacity: 0;
+	pointer-events: none;
+}
+
+#palettes.open {
+	overflow-x: auto;
+	width: 100%;
+	height: auto;
+	background: transparent;
+}
+#palettes.open .palette {
+	opacity: 1;
+	pointer-events: all;
+}
+.palette {
+	flex: 1 0 26%;
+	height: 2rem;
+	width: 2rem;
+	background: black;
+	margin-right: .5rem;
+	margin-bottom: .5rem;
+	border: 1px solid black;
+	border-radius: 2px;
+}
+
+#palettes * {
+	opacity: 0;
+	pointer-events: none;
+}
+
+#palettes.open {
+	overflow-x: auto;
+	width: 100%;
+	height: auto;
+	background: transparent;
+}
+#palettes.open .palette {
+	opacity: 1;
+	pointer-events: all;
+}
+
+.palette {
+	flex: 1 0 26%;
+	height: 2rem;
+	width: 2rem;
+	background: black;
+	margin-right: .5rem;
+	margin-bottom: .5rem;
+	border: 1px solid black;
+	border-radius: 2px;
+}
+
+
+
+.palette p {
+	display: none;
+}
+
+
+.palette p {
+	display: none;
+}
+
+
+.palette p {
+	display: none;
 }
 
 /* MODALS */
@@ -275,11 +369,11 @@ button {
 }
 
 .modalTitle {
-	padding-bottom: 2em;
+	padding-bottom: 2rem;
 	border-top: 1px solid #f5f5f5;
-	font-size: 2em;
+	font-size: 2rem;
 	text-align: right;
-	padding-right: 0.125em;
+	padding-right: 0.125rem;
 }
 
 .SVGbox:not(.activeModal) .modalTitle {
@@ -306,7 +400,7 @@ button {
 }
 
 #login_header {
-	margin: 0.125em auto;
+	margin: 0.125rem auto;
 }
 
 .signIn {
@@ -316,33 +410,33 @@ button {
 }
 
 .signIn input {
-	padding: .33em;
+	padding: .33rem;
 	border: none;
 	background: #f5f5f5;
-	margin: 0.5em auto;
-	width: 25em;
+	margin: 0.5rem auto;
+	width: 25rem;
 }
 
 .info {
 	display: flex;
 	flex-flow: column;
 	align-items: center;
-	width: 20em;
+	width: 20rem;
 }
 
 .info h2 {
-	/*margin: 0 0 1em 1em;*/
+	/*margin: 0 0 1rem 1rem;*/
 }
 
 .info img {
-	width: 10em;
-	height: 10em;
+	width: 10rem;
+	height: 10rem;
 	border-radius: 100%;
 	border: 1px solid #f5f5f5;
-	margin-bottom: 1em;
+	margin-bottom: 1rem;
 	background: rgba(0, 0, 0, .3);
 	text-align: center;
-	padding-top: 4.5em;
+	padding-top: 4.5rem;
 	cursor: pointer;
 }
 
@@ -352,14 +446,14 @@ button {
 }
 
 .infoBtn {
-	padding: .5em;
-	margin: 0.5em auto;
+	padding: .5rem;
+	margin: 0.5rem auto;
 	background: transparent;
 	border: 1px solid #f5f5f5;
 	color: #f5f5f5;
 	border-radius: 2px;
 	transition: .1s;
-	width: 25em;
+	width: 25rem;
 }
 
 .infoBtn:hover {
@@ -381,13 +475,16 @@ button {
 /* HELP SCREEN */
 
 #helpTitle {
-	padding-top: 0.125em;
+	padding-top: 0.125rem;
 }
 
-.help_paragraph {
+.helpP {
 	margin: auto;
 	background-color:rgba(68,68,68,0.45);
-	padding: .5em;
+	border: 1px solid white;
+	border-radius: 2px;
+	padding: .5rem;
+	margin-bottom: 1rem;
 }
 
 .helpModal {
@@ -404,12 +501,12 @@ button {
 }
 
 .accordion h2 {
-	padding: .5em 0 1em;
+	padding: .5rem 0 1rem;
 	/*border-top: 1px solid #f5f5f5;*/
 }
 
 .accordion {
-	/* margin-left: 1em; */
+	/* margin-left: 1rem; */
 	/*height: 0;*/
 	transition: .2s;
 	overflow-y: hidden;
@@ -429,7 +526,7 @@ button {
 	left: 0;
 	z-index: 7;
 	margin: 0 !important;
-	padding: 4em 1em 0;
+	padding: 4em 1rem 0;
 	width: 100% !important;
 	max-width: 100% !important;
 	/*height: 100% !important;*/
@@ -448,33 +545,44 @@ button {
 }
 
 .activeModal.SVGbox {
-	padding: 7em 1em 4em;
+	background: url(../img/canvasTextureL.jpg);
+	background-size: cover;
+	background-position: center;
+	padding: 7em 1rem 4em;
 	color: #444;
 	z-index: 5;
-	overflow: hidden !important;
+	overflow: auto !important;
 }
 
 .activeModal.SVGbox h2 {
 	position: fixed;
-	top: 3em;
+	top: 3rem;
 	left: 0;
-	padding-left: 2em;
+	padding-left: 2rem;
 	border-top: 1px solid #444;
 	text-shadow: 0 0 10px #f5f5f5;
 }
 
 .activeModal.SVGbox p {
 	position: fixed;
-	top: 6em;
-	margin-left: 4em;
+	top: 6rem;
+	margin-left: 4rem;
 	text-shadow: 0 0 10px #f5f5f5;
 }
 
 .activeModal.SVGbox svg {
 	width: 100%;
+	max-width: 200vw;
 	height: 100%;
 	margin: 0;
 	pointer-events: all;
+	position: relative;
+}
+.activeModal .innerBox {
+	width: 100%;
+	height: 200vh;
+	padding-bottom: 3rem;
+	position: absolute;
 }
 
 .showRainbow * {
@@ -501,7 +609,7 @@ button {
 		justify-content: flex-end;
 	}
 	.about h3 {
-		margin: 5em 0 0 4em;
+		margin: 5rem 0 0 4em;
 		font-size: 200%;
 		max-width: 40em;
 	}
@@ -511,18 +619,18 @@ button {
 		margin: 0em;
 	}
 	.activeModal {
-		padding: 5em 2em 0;
+		padding: 5rem 2em 0;
 	}
 	.SVGbox svg {
 		filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, .3));
 	}
 	#swatches {
-		width: auto;
+		/*width: auto;*/
 		justify-content: flex-start;
-		padding-right: 1em;
+		padding-right: 1rem;
 	}
 	.innerUserModal {
-		height: 25em;
+		height: 25rem;
 		display: flex;
 		flex-flow: row wrap;
 		justify-content: center;
@@ -535,10 +643,10 @@ button {
 	.activeModal h2.artistTitle {
 		position: fixed;
 		z-index: 60;
-		top: 1em;
-		left: 12em;
-		font-size: 1.5em;
-		padding-left: .5em;
+		top: 1rem;
+		left: 12rem;
+		font-size: 1.5rem;
+		padding-left: .5rem;
 		margin: 0;
 		border-left: 1px solid #444;
 		border-top: 0px;
@@ -564,19 +672,20 @@ button {
 		padding-left: 20em;
 	}
 	.nav {
-		height: 5em;
+		height: 5rem;
 	}
 	.icon {
 		width: 4em;
-		margin: 0 1em 0 0;
+		height: 4em;
+		margin: 0 1rem 0 0;
 		transition: .2s;
 		cursor: pointer;
 	}
 	.about {
-		height: 20em;
+		height: 0em;
 	}
 	.about h3 {
-		margin: 1em 0 0 0em;
+		margin: 1rem 0 0 0em;
 	}
 	.avatar {
 		position: fixed;
@@ -587,35 +696,35 @@ button {
 	}
 	.modalTitle {
 		z-index: 60;
-		top: 2em;
-		left: 25em;
-		font-size: 3em;
-		padding-left: 2em;
+		top: 2rem;
+		left: 25rem;
+		font-size: 3rem;
+		padding-left: 2rem;
 	}
 	.activeModal h2.artistTitle {
-		top: 1em;
-		left: 23em;
-		font-size: 3em;
-		padding: 1em 1em 1em 1.5em;
+		top: 1rem;
+		left: 23rem;
+		font-size: 3rem;
+		padding: 1rem 1rem 1rem 1.5rem;
 		margin: 0;
 		border-left: 1px solid #444;
 	}
 	.activeModal {
-		padding: 7em 2em 0;
+		padding: 7rem 2rem 0;
 	}
 	.activeModal.SVGbox {
-		padding: 6em 1em 4em;
+		padding: 6rem 1rem 4rem;
 	}
 	.activeModal.SVGbox h2 {
 		/*top: 4em;*/
 	}
 	.activeModal.SVGbox p {
-		top: 8em;
+		top: 8rem;
 	}
 	.swatch,
 	.erasor {
-		height: 2em;
-		width: 4.5em;
+		height: 2rem;
+		width: 4.5rem;
 	}
 	/* HDTV */
 	@media screen and (min-width: 84em) {
