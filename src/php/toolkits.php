@@ -6,12 +6,10 @@
 	 	<div class="icon" id="zoomOut" onclick="scaleVal(0.9)"><img src="icon/zoomOut.png" alt=""></div>
 	 	<div class="icon" id="zoomIn" onclick="scaleVal(1.1)"><img src="icon/zoomIn.png" alt=""></div>
 	 	<div class="icon undoBtn" onclick="undo()"><img src="icon/undo.png" alt=""></div>
-
 		<form action="" method="post" id="save-work-form">
 		<button id="save-btn" class="temp" >Save Work</button>
 		<input type="text"  name="save-work" class="temp" id="save-work" value="">
 		</form>
-
 		<div class="icon" id="palettes">
 
 

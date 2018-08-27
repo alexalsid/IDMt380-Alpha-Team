@@ -80,7 +80,9 @@ p, input, button {
 .icon {
 	width: 2em;
 	height: 2em;
+
 	margin: 0 .5rem .5rem 0;
+
 	transition: .2s;
 	pointer-events: all;
 	cursor: pointer;
@@ -119,7 +121,9 @@ p, input, button {
 }
 
 g g * {
-	transition: .2s;
+
+	transition: .1s;
+
 }
 
 g g:hover * {
@@ -209,7 +213,9 @@ g g:hover * {
 	z-index: 6;
 }
 
-.toolkits * {
+
+.toolkits .colorPicker, .toolkits #swatches, .toolkits .toolBar {
+
 	pointer-events: all;
 	/*width: auto;*/
 	transition: .1s;

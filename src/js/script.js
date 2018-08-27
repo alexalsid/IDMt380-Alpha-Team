@@ -62,7 +62,7 @@ function clearImage(which) {
 	backCount = 0;
 	var selector = '#' + this.id + ' *';
 	$(selector).css('fill', activeColor);
-});*/
+});
 
 
 
