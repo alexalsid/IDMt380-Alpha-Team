@@ -3,7 +3,7 @@
 function load() {
 	$("[data-name='outline'], [data-name='outlines'], #outline").css('pointer-events','none');
 	$('svg').addClass('svg');
-	setSwatches(theScheme);
+	// scaleVal(30);
 }
 
 
@@ -51,11 +51,12 @@ function clearImage(which) {
 // });
 
 
+
 /*$('g g').on('click', function() {
 	setUndo(this.children);
 	if (backCount > 0) {
 		for (var i = 0; i < backCount.length; i++) {
- 		priorMoves.splice(0, 1);
+ 		return priorMoves.splice(0, 1);
 		}
 	}
 	backCount = 0;
@@ -88,35 +89,13 @@ function clearImage(which) {
 // });
 
 
-
-function clearImage(which) {
-	if (which === 'all') {
-		if(confirm("Are you sure you want to CLEAR ALL of your paintings? \nThis won't effect the paintings you've already saved.")) {
-			$('.SVGbox .innerBox svg g g *').css('fill', '#ffffff');			
-		}
-	}
-	else {
-		var toClear = $(which).children[0].children[0].children;
-		console.log(which);
-		for (var i = 0; i < toClear.length; i++) {
-			for (var j = 0; j < toClear[i].children.length; j++) {
-				$(toClear[i].children[j]).css('fill','#ffffff');
-			}
-		}
-	}
-}
-// $('#gallery svg *, #gallery svg g *').hover(function(){
-// 	if (down) {
-// 	  	$(this).css("fill", activeColor);		
-// 	}
-// });
-
-
 // $('#gallery svg *, #gallery svg g *').click(function(){
 
 
 
 // var brushing = setInterval(brush,50);
+
+
 function scaleVal(incr) {
 	theScale *= incr;
 	console.log(theScale);
@@ -152,7 +131,8 @@ function scaleVal(incr) {
 
 
 //  HOT KEYS
-var index = 0;
+var swatchI = 0;
+var imageI = 0;
 
 $(document).on('keypress', function(event) {
 
@@ -170,15 +150,14 @@ $(document).on('keypress', function(event) {
 		scaleVal(1.1);
 	}
 
-
 // c = Show color picker
 	if (event.keyCode === 99 ) {
-		if ($('#toolkits').hasClass('showRainbow')) {
-	        $('#toolkits').removeClass('showRainbow');		
-		} else {
-			showRainbow();
-		}
-	}	
+	if ($('#toolkits').hasClass('showRainbow')) {
+        $('#toolkits').removeClass('showRainbow');		
+	} else {
+		showRainbow();
+	}
+	}
 
 // ^W = Wipe ALL images
 	if (event.keyCode === 87) {
@@ -194,33 +173,90 @@ $(document).on('keypress', function(event) {
 	if (event.keyCode === 105) {
 		openModal('#helpModal');
 	}
-	if (event.keyCode === 117) {
-		openModal('#userModal');
+	// if (event.keyCode === 117) {
+	// 	openModal('#userModal');
+	// }
+
+// 1-0 = Switch images
+
+for (var i = 0; i < gallery.children.length; i++) {
+if (event.keyCode === (49 + i)) {
+	if (event.keyCode < 58) {
+	openImage(gallery.children[i]);		
 	}
+}
+if (event.keyCode === 48) {
+	openImage(gallery.children[9]);
+}
+}
 
 
-// b/n = Open last/next image
+// h = Hue shift (+)
+if (event.keyCode === 104) {
+	if (activeHue < 360) {
+		activeHue += 10;
+	} else {
+		activeHue = 0;
+	}
+}
+// ^H = Hue shift (-)
+if (event.keyCode === 72) {
+	if (activeHue > 0) {
+		activeHue -= 10;
+	} else {
+		activeHue = 360;
+	}
+}
+// b = Brightness shift (+)
+if (event.keyCode === 98) {
+	if (activeLit < 100) {
+		activeLit += 5;
+	}else {
+		activeLit = 0;
+	}
+}
+// ^B = Brightness shift (-)
+if (event.keyCode === 66) {
+	if (activeLit > 0) {
+		activeLit -= 5;
+	} else {
+		activeLit = 100;
+	}
+}
+idleTime = 0;
+changeColor(activeHue, activeSat, activeLit);
+movePicker(activeHue, activeLit);
 
-		if (event.keyCode === 118) {
-			index--;
-			if (index < 0) {index = gallery.children.length-1;}
-			openImage(gallery.children[index]);
-		}
-		if (event.keyCode === 98) {
-			index++;
-			if (index >= gallery.children.length-1) {index = 0;}			
-			openImage(gallery.children[index]);
-		}
+// n = back a Swatch
+if (event.keyCode === 86) {
+	if (swatchI <= 0) {
+		swatchI = swatches.children.length-1;
+	} else {swatchI--;}
+	switchSwatch(swatches.children[swatchI]);
+}
 
-		if (event.keyCode === 103) {
-			if (!groupMode.checked) {
-				groupMode.checked = true;
-			}
-			else {
-				groupMode.checked = false;
-			}
-		}
+// m = forward a Swatch
+if (event.keyCode === 118) {
+	if (swatchI >= swatches.children.length-1) {
+		swatchI = 0;
+	} else {swatchI++;}
+	// console.log(swatches.children[2]);
+	switchSwatch(swatches.children[swatchI]);
+}
 
+
+// Toggle Grouping
+
+if (event.keyCode === 103) {
+	if (!groupMode.checked) {
+		groupMode.checked = true;
+	}
+	else {
+		groupMode.checked = false;
+	}
+}
+
+// z = Undo
 	if (event.keyCode === 122) {
 		undo();
 	}
@@ -277,6 +313,8 @@ function changeColor(hue,sat,lit) {
 	activeColor = "hsl(" + hue + ", " + sat + "%, " + lit + "%)";
 	console.log(activeColor);
 
+	activeHue = hue;
+	activeLit = lit;
 	activeSwatch.style.background = activeColor;
 	swatches.style.background = activeColor;
 	pickerButton.style.background = activeColor;
@@ -304,6 +342,7 @@ for (var i = 0; i < palettes.children.length; i++) {
 }
 
 var theScheme = schemes[Math.floor(Math.random()*schemes.length)];
+
 
 
 $('#palettes').on('click',function() {
@@ -353,15 +392,17 @@ function setSwatches(theScheme) {
 }
 
 
-$('.swatch').click(function() {
+$('.swatch').click(function(){switchSwatch(this)});
+
+function switchSwatch(which) {
+	console.log(which);
 	$('.swatch').attr("id","not");
-	$(this).attr("id","activeSwatch");
-	var colorArray = getRgbArray($(this).css('background'), false, 'hsl');
-	idleTime=0;
+	$(which).attr("id","activeSwatch");
+	var colorArray = getRgbArray($(which).css('background'), false, 'hsl');
+	idleTime = 0;
 	changeColor(colorArray[0], colorArray[1], colorArray[2]);
 	movePicker(colorArray[0],colorArray[2]);
-});
-
+}
 
 // Show color picker when you click a swatch, and hide it when you idle 
 
@@ -417,7 +458,11 @@ $('#userBtn').click(function (){openModal('#userModal')});
 $('#helpBtn').click(function (){openModal('#helpModal')});
 
 $("#gallery").on("click", ".SVGbox", function() {
-	openImage(this);
+	if ($(this).hasClass('activeModal')) {
+	console.log('already open');		
+	} else {
+		openImage(this);
+	}
 });
 
 $("#myGallery").on("click", ".SVGbox", function () {
@@ -425,6 +470,7 @@ $("#myGallery").on("click", ".SVGbox", function () {
 });
 
 function openImage(that) {
+
 	openModal(that);
 	$('#toolkits').removeClass('hide');
 	title.src = "img/auroraLogo.png";
@@ -433,11 +479,11 @@ function openImage(that) {
 	$('.icon svg path').css('fill','#2f2f2f');
 
 	if (!swatchOpened) {
-	// let selector = " " + that + " "
-	theScale = parseInt($(that).css('height'),10);
-		setTimeout(function(){setSwatches();}, 500);		
+		setTimeout(function(){setSwatches(theScheme);}, 500);		
 		swatchOpened = true;
 	}
+	// let selector = " " + that + " "
+	theScale = parseInt($(that).css('height'),10);
 
 }
 
@@ -452,11 +498,11 @@ function openModal(modal) {
 		$('*').removeClass('activeModal');
 		if ($(modal).is('#userModal')) {			
 			$('#userBtn svg path').css('fill','#ffba40');
-			$('#helpBtn svg path').css('fill','#f5f5f5');
+			// $('#helpBtn svg path').css('fill','#f5f5f5');
 		}
 		if ($(modal).is('#helpModal')) {			
 			$('#helpBtn svg path').css('fill','#86fff7');
-			$('#userBtn svg path').css('fill','#f5f5f5');
+			$('#helpBtn img').attr('src','icon/helpOpen.png');
 }
 		$(modal).addClass('activeModal');
 	}
@@ -464,12 +510,14 @@ function openModal(modal) {
 
 function closeModals() {
 	$('.activeModal svg').css('height','15rem');
+	// theScale = 10;
 	$('*').removeClass('activeModal');
 	$('.toolkits').addClass('hide');
 
 	title.src = "img/auroraLogoL.png";
 	nav.style.background = 'linear-gradient(rgba(0,0,10,.7) 0%, transparent)';
 	$('#userBtn svg path, #helpBtn svg path').css('fill','#f5f5f5');
+	$('#helpBtn img').attr('src','icon/help.png');
 	$('#title, .icon svg').css('filter','drop-shadow(0 0 10px black)');
 
 	priorMoves = [];
