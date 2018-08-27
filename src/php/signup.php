@@ -84,11 +84,9 @@ function saveWork(){
     // and this will be retreived from data and stored within JS or something
     // savedId will be index of object in saved work
     $savedId = null;
-    $html = file_get_contents('index.php');
-    $pattern = '#<\s*?span\b[^>]*>(.*?)</span\b[^>]*>#s';
-    preg_match($pattern, $html, $matches);
+   
     
-    $newSource = $matches[1];
+    $newSource = $_POST['save-work'];
     // get index for current user object
     global $currentUser;
     $currentUserIndex = findIndex($currentUser);
