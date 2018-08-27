@@ -7,13 +7,14 @@ $newUsername = $_POST['new-username'];
 $username = $_POST['username'];
 $currentUser = $_GET['username'];
 
+
 /* function for testing basic sign up */
 function signUp(){
     echo 'SIGNUP FUNCT';
     global $userData;
     //new user and new password grabbed from form
     $newUsername =  $_POST['new-username'];
-    $newPassword = $_POST['password'];
+    $newPassword = $_POST['new-password'];
     $avatar = $_POST['avatar'];
     echo $newUsername;
     echo $newPassword;
@@ -37,11 +38,22 @@ function signUp(){
         // update json file with updated array of user info
         $newUserData = json_encode($userData, JSON_PRETTY_PRINT);
         file_put_contents('../src/php/json/user.json', $newUserData);
-        echo "You have successfully signed up.\n";
+        
+        //put username in url and add logged in script
+        echo '<script> window.location.replace("index.php?username=' . $newUsername . '") </script>';
+
+        echo 'You have successfully signed up.\n';
+
+    
+
+       
         }
     }
     echo "\n\n";
 }; //end sign up function 
+
+
+
 // Function for user login
 function login() {
     global $userData;
@@ -54,16 +66,22 @@ function login() {
         // loads saved work for the current user
         $currentUser = $username;
         echo "you have successfully signed in.\n";
-        loadSavedWork($currentUser);
+
+        echo '<script> window.location.replace("index.php?username=' . $username . '"); </script>';
+      
         } else {
             //login failed, this should trigger state change in UI
             $currentUser = NULL;
         }
     }
 };
+
+
 /* function for testing loading user saved work */
-function loadSavedWork($currentUser){
+function loadSavedWork(){
     global $userData;
+    global $currentUser;
+
     // get index for current user object
     $currentUserIndex = findIndex($currentUser);
     $user = $userData[$currentUserIndex];
@@ -75,6 +93,7 @@ function loadSavedWork($currentUser){
        
     }
     echo "\n";
+   
 };
 /* function for testing saving */
 function saveWork(){
@@ -130,12 +149,10 @@ function findIndex($currentUser) {
 };
 
 
-function getSvgData (){
+function test() {
 
-  
-
-   
-};
+    echo 'why wont this work';
+}
 
 
 
@@ -147,10 +164,39 @@ if (isset($_POST['new-username']))
 } 
 elseif (isset($_POST['username'])) {
    login();
+
 } elseif(isset($_POST['save-work'])) {
 
     saveWork();
-}
+};
+
+
+/*tell js user is logged in */
+
+function checkLoggedIn () {
+
+    global $currentUser;
+
+    if (empty($currentUser)) {
+
+        echo 'there is no user';
+    } else {
+
+        echo '<script src="js/loggedin.js"></script>';
+        loadSavedWork($currentUser);
+    
+
+    }
+
+
+   };
+
+   checkLoggedIn();
+
+
+
+
+
 
 
 

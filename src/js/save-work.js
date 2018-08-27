@@ -17,3 +17,14 @@ console.log(submitBtn.value);
 
 saveBtn.addEventListener('click', getSvgData);
 
+
+
+function hideForm() {
+
+    var formCont = document.getElementById('form-cont');
+    
+    formCont.className = 'hide';
+    
+};
+
+hideForm();

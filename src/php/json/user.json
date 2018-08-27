@@ -1,8 +1,8 @@
-{
-    "0": {
+[
+    {
         "user_id": 0,
-        "username": "ws392",
-        "password": "pass123",
+        "username": "ws392@drexel.edu",
+        "password": "pass1234",
         "avatar": "fox",
         "saved_work": [
             {
@@ -23,52 +23,48 @@
             }
         ]
     },
-    "1": {
+    {
         "user_id": 1,
-        "username": "ppl980",
+        "username": "ppl980@drexel.edu",
         "password": "pass1234",
         "avatar": "fox",
         "saved_work": [
             {
                 "saved_id": 0,
                 "saved_source": "Newly saved work"
+            },
+            {
+                "saved_id": 1,
+                "saved_source": "Change this to see if saved"
             }
         ]
     },
-    "2": {
+    {
         "user_id": 2,
         "username": "asd77",
         "password": "pass1234",
         "avatar": "monkey",
         "saved_work": []
     },
-    "3": {
+    {
         "user_id": 3,
         "username": "dfe73",
         "password": "pass1234",
         "avatar": "snake",
         "saved_work": []
     },
-    "4": {
-        "user_id": 4,
-        "username": "alex",
-        "password": "alex",
+    {
+        "user_id": 6,
+        "username": "fake@drexel.edu",
+        "password": "pass1234",
         "avatar": null,
-        "saved_work": [
-            {
-                "saved_id": 0,
-                "saved_source": "\r\n<svg width=\"116px\" height=\"128px\" viewBox=\"0 0 116 128\" version=\"1.1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\">\r\n    <!-- Generator: Sketch 47.1 (45422) - http:\/\/www.bohemiancoding.com\/sketch -->\r\n    <title>Artboard<\/title>\r\n    <defs><\/defs>\r\n    <g id=\"Page-1\" stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\">\r\n        <g id=\"Artboard\">\r\n            <circle id=\"Oval\" stroke=\"#3F3F3F\" cx=\"56\" cy=\"65\" r=\"50\"><\/circle>\r\n            <ellipse id=\"Oval-2\" stroke=\"#353535\" fill=\"#282828\" cx=\"32.5\" cy=\"53\" rx=\"6.5\" ry=\"6\"><\/ellipse>\r\n            <ellipse id=\"Oval-2\" stroke=\"#353535\" fill=\"#282828\" cx=\"79.5\" cy=\"53\" rx=\"6.5\" ry=\"6\"><\/ellipse>\r\n            <path d=\"M29,97 C47.6666667,69 65.6666667,69 83,97\" id=\"Path-2\" stroke=\"#313131\"><\/path>\r\n        <\/g>\r\n    <\/g>\r\n<\/svg>\r\n\r\n"
-            },
-            {
-                "saved_id": 1,
-                "saved_source": "\r\n<svg width=\"116px\" height=\"128px\" viewBox=\"0 0 116 128\" version=\"1.1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\">\r\n    <!-- Generator: Sketch 47.1 (45422) - http:\/\/www.bohemiancoding.com\/sketch -->\r\n    <title>Artboard<\/title>\r\n    <defs><\/defs>\r\n    <g id=\"Page-1\" stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\">\r\n        <g id=\"Artboard\">\r\n            <circle id=\"Oval\" stroke=\"#3F3F3F\" cx=\"56\" cy=\"65\" r=\"50\"><\/circle>\r\n            <ellipse id=\"Oval-2\" stroke=\"#353535\" fill=\"#282828\" cx=\"32.5\" cy=\"53\" rx=\"6.5\" ry=\"6\"><\/ellipse>\r\n            <ellipse id=\"Oval-2\" stroke=\"#353535\" fill=\"#282828\" cx=\"79.5\" cy=\"53\" rx=\"6.5\" ry=\"6\"><\/ellipse>\r\n            <path d=\"M29,97 C47.6666667,69 65.6666667,69 83,97\" id=\"Path-2\" stroke=\"#313131\"><\/path>\r\n        <\/g>\r\n    <\/g>\r\n<\/svg>\r\n\r\n"
-            }
-        ]
+        "saved_work": []
     },
-    "": {
-        "saved_work": null
-    },
-    "5": {
-        "saved_work": null
+    {
+        "user_id": 7,
+        "username": "ara82@drexel.edu",
+        "password": "pass1234",
+        "avatar": null,
+        "saved_work": []
     }
-}
+]
